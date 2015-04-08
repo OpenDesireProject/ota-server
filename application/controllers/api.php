@@ -44,7 +44,7 @@ class Api extends CI_Controller {
 		$this->form_validation->set_rules('method', 'method', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('params[device]', 'params[device]', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('params[channels]', 'params[channels]', 'required|xss_clean');
-		$this->form_validation->set_rules('params[api_level]', 'params[api_level]', 'required|xss_clean|integer');
+		$this->form_validation->set_rules('params[api_level]', 'params[api_level]', 'xss_clean|integer');
 		$this->form_validation->set_rules('params[source_incremental]', 'params[source_incremental]', 'trim|xss_clean');
 
 		if ($this->form_validation->run() === TRUE)
