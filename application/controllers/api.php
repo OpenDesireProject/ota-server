@@ -23,15 +23,6 @@ class Api extends CI_Controller {
 			return;
 		}
 
-		if ( $this->uri->uri_string() === 'api/v1/build/get_delta' )
-		{
-			$ret['errors'] = array(
-				'message' => 'Unable to find delta'
-			);
-			$this->output->set_content_type('application/json')->set_output(json_encode($ret));
-			return;
-		}
-
 		$input = file_get_contents("php://input");
 		if ( $this->security->xss_clean($input, TRUE) !== TRUE )
 		{
@@ -96,6 +87,21 @@ class Api extends CI_Controller {
 		);
 
 		$this->output->set_content_type('application/json')->set_output(json_encode($result));
+	}
+
+	/**
+	 * Dummy v1 call
+	 */
+	public function v1()
+	{
+		if ( $this->uri->uri_string() === 'api/v1/build/get_delta' )
+		{
+			$result['errors'] = array(
+				'message' => 'Unable to find delta'
+			);
+			$this->output->set_content_type('application/json')->set_output(json_encode($result));
+			return;
+		}
 	}
 
 	/**
