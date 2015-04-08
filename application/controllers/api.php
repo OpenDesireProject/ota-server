@@ -102,6 +102,11 @@ class Api extends CI_Controller {
 			$this->output->set_content_type('application/json')->set_output(json_encode($result));
 			return;
 		}
+		else
+		{
+			$this->http_error(400);
+			return;
+		}
 	}
 
 	/**
