@@ -1,0 +1,21 @@
+--
+-- Table structure for table `updates`
+--
+
+CREATE TABLE `updates` (
+  `filename` varchar(255) NOT NULL,
+  `device` varchar(16) NOT NULL,
+  `incremental` char(10) NOT NULL,
+  `timestamp` bigint(20) NOT NULL,
+  `md5sum` char(32) NOT NULL,
+  `channel` varchar(16) NOT NULL,
+  `api_level` tinyint(4) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `changes` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for table `updates`
+--
+ALTER TABLE `updates`
+ ADD PRIMARY KEY (`filename`);
