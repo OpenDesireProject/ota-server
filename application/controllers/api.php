@@ -44,6 +44,7 @@ class Api extends CI_Controller {
 		$this->form_validation->set_rules('method', 'method', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('params[device]', 'params[device]', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('params[channels]', 'params[channels]', 'required|xss_clean');
+		$this->form_validation->set_rules('params[api_level]', 'params[api_level]', 'required|xss_clean|integer');
 		$this->form_validation->set_rules('params[source_incremental]', 'params[source_incremental]', 'trim|xss_clean');
 
 		if ($this->form_validation->run() === TRUE)
@@ -51,7 +52,7 @@ class Api extends CI_Controller {
 			if ($_POST['method'] === "get_all_builds")
 			{
 				$this->db->where('device', $_POST['params']['device']);
-				if ($_POST['params']['api_level'] !== NULL)
+				if (isset($_POST['params']['api_level']) && $_POST['params']['api_level'] !== NULL)
 					$this->db->where('api_level', $_POST['params']['api_level']);
 				$query = $this->db->get('updates');
 				foreach ($query->result() as $row)
