@@ -54,6 +54,7 @@ class Api extends CI_Controller {
 				$this->db->where('device', $_POST['params']['device']);
 				if (isset($_POST['params']['api_level']) && $_POST['params']['api_level'] !== NULL)
 					$this->db->where('api_level', $_POST['params']['api_level']);
+				$this->db->order_by('timestamp', 'ASC');
 				$query = $this->db->get('updates');
 				foreach ($query->result() as $row)
 				{
