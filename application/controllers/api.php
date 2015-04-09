@@ -9,6 +9,7 @@ class Api extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->helper(array('url'));
 		$this->load->library(array('form_validation', 'security', 'uri'));
 	}
 
@@ -66,8 +67,8 @@ class Api extends CI_Controller {
 						'md5sum' => $row->md5sum,
 						'channel' => $row->channel,
 						'api_level' => $row->api_level,
-						'url' => $row->url,
-						'changes' => $row->changes
+						'url' => site_url('dl/rom/' . $row->filename),
+						'changes' => site_url('dl/changes/' . $row->filename)
 					);
 				}
 			}
