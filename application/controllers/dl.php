@@ -41,7 +41,7 @@ class Dl extends CI_Controller {
 		$query = $this->db->get('updates');
 		if ( $query->num_rows() === 1 )
 		{
-			redirect($query->result_array()[0]['url'], 'refresh');
+			redirect($query->result_array()[0]['url']);
 			return;
 		}
 		else
@@ -71,7 +71,7 @@ class Dl extends CI_Controller {
 		$query = $this->db->get('updates');
 		if ( $query->num_rows() === 1 )
 		{
-			redirect($query->result_array()[0]['changes'], 'refresh');
+			redirect($query->result_array()[0]['changes']);
 			return;
 		}
 		else
